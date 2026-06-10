@@ -15,7 +15,7 @@ class TrocaVizinhosLinkedList {
 		addLast(Integer.parseInt(entrada[i]));
 	}
 	
-	trocaVizinhos();
+	trocaVizinhos(index);
 	printLinkedList();
 	sc.close();
 	
@@ -33,7 +33,7 @@ class TrocaVizinhosLinkedList {
 		Node newNode = new Node(valor);
 		
 		if(isEmpty()) {
-			this.head = newNode;
+			thNode auxPrev = aux.prev;is.head = newNode;
 			this.tail = newNode;
 		} else {
 			this.tail.next = newNode;
@@ -58,14 +58,25 @@ class TrocaVizinhosLinkedList {
 		return aux;
 	}
 	
-	public void trocaVizinhos() {
+	public void trocaVizinhos(int index) {
 		Node aux = get(index);
 		Node vizinho = aux.next;
+		Node vizinhoNext = vizinho.next;
 		
-		aux.next = vizinho.next;
+		if (aux != head) {
+			Node auxPrev = aux.prev;
+			auxPrev.next = vizinho;
+			vizinho.prev = auxPrev;
+			aux.prev = vizinho;
+		}
+		
+		if () 
+		
+		vizinhoNext.prev = aux;
 		vizinho.next = aux;
-		vizinho.prev = aux.prev;
+		vizinho.prev = auxPrev;
 		aux.prev = vizinho;
+		aux.next = vizinhoNext;
 	}
 }
 
